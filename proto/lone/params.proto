@@ -1,0 +1,12 @@
+syntax = "proto3";
+package darxan.lone.lone;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/darxan/lone/x/lone/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

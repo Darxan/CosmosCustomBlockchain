@@ -1,0 +1,18 @@
+syntax = "proto3";
+package darxan.lone.lone;
+
+import "gogoproto/gogo.proto";
+import "lone/params.proto";
+import "lone/whois.proto";
+import "lone/customtx.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/darxan/lone/x/lone/types";
+
+// GenesisState defines the lone module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  repeated Whois whoisList = 2 [(gogoproto.nullable) = false];
+  repeated Customtx customtxList = 4 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+}

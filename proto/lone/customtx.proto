@@ -1,0 +1,17 @@
+syntax = "proto3";
+package darxan.lone.lone;
+
+option go_package = "github.com/darxan/lone/x/lone/types";
+
+message Customtx {
+  string index = 1; 
+  string creator = 2; 
+  string sender = 3; 
+  string receiver = 4; 
+  string amount = 5; 
+  string feePercentage = 6; 
+  string feeReceiver = 7; 
+  string servieName = 8; 
+  
+}
+

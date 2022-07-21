@@ -19749,6 +19749,560 @@ paths:
           format: int64
       tags:
         - Query
+  /darxan/lone/lone/customtransactions:
+    get:
+      summary: Queries a list of Customtransactions items.
+      operationId: DarxanLoneLoneCustomtransactions
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              sender:
+                type: string
+              receiver:
+                type: string
+              CustomTransaction:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                      format: uint64
+                    creator:
+                      type: string
+                    sender:
+                      type: string
+                    receiver:
+                      type: string
+                    amount:
+                      type: string
+                    feePercentage:
+                      type: string
+                    feeReceiver:
+                      type: string
+                    serviceName:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  /darxan/lone/lone/customtx:
+    get:
+      summary: Queries a list of Customtx items.
+      operationId: DarxanLoneLoneCustomtxAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customtx:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    index:
+                      type: string
+                    creator:
+                      type: string
+                    sender:
+                      type: string
+                    receiver:
+                      type: string
+                    amount:
+                      type: string
+                    feePercentage:
+                      type: string
+                    feeReceiver:
+                      type: string
+                    servieName:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/darxan/lone/lone/customtx/{index}':
+    get:
+      summary: Queries a Customtx by index.
+      operationId: DarxanLoneLoneCustomtx
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              customtx:
+                type: object
+                properties:
+                  index:
+                    type: string
+                  creator:
+                    type: string
+                  sender:
+                    type: string
+                  receiver:
+                    type: string
+                  amount:
+                    type: string
+                  feePercentage:
+                    type: string
+                  feeReceiver:
+                    type: string
+                  servieName:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: index
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
+  /darxan/lone/lone/params:
+    get:
+      summary: Parameters queries the parameters of the module.
+      operationId: DarxanLoneLoneParams
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              params:
+                description: params holds all the parameters of this module.
+                type: object
+            description: >-
+              QueryParamsResponse is response type for the Query/Params RPC
+              method.
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      tags:
+        - Query
+  /darxan/lone/lone/whois:
+    get:
+      summary: Queries a list of Whois items.
+      operationId: DarxanLoneLoneWhoisAll
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              whois:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    index:
+                      type: string
+                    creator:
+                      type: string
+                    sender:
+                      type: string
+                    receiver:
+                      type: string
+                    amount:
+                      type: string
+                    feePercentage:
+                      type: string
+                    feeReceiver:
+                      type: string
+                    serviceName:
+                      type: string
+              pagination:
+                type: object
+                properties:
+                  next_key:
+                    type: string
+                    format: byte
+                    title: |-
+                      next_key is the key to be passed to PageRequest.key to
+                      query the next page most efficiently
+                  total:
+                    type: string
+                    format: uint64
+                    title: >-
+                      total is total number of results available if
+                      PageRequest.count_total
+
+                      was set, its value is undefined otherwise
+                description: >-
+                  PageResponse is to be embedded in gRPC response messages where
+                  the
+
+                  corresponding request message has used PageRequest.
+
+                   message SomeResponse {
+                           repeated Bar results = 1;
+                           PageResponse page = 2;
+                   }
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: pagination.key
+          description: |-
+            key is a value returned in PageResponse.next_key to begin
+            querying the next page most efficiently. Only one of offset or key
+            should be set.
+          in: query
+          required: false
+          type: string
+          format: byte
+        - name: pagination.offset
+          description: >-
+            offset is a numeric offset that can be used when key is unavailable.
+
+            It is less efficient than using key. Only one of offset or key
+            should
+
+            be set.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.limit
+          description: >-
+            limit is the total number of results to be returned in the result
+            page.
+
+            If left empty it will default to a value to be set by each app.
+          in: query
+          required: false
+          type: string
+          format: uint64
+        - name: pagination.count_total
+          description: >-
+            count_total is set to true  to indicate that the result set should
+            include
+
+            a count of the total number of items available for pagination in
+            UIs.
+
+            count_total is only respected when offset is used. It is ignored
+            when key
+
+            is set.
+          in: query
+          required: false
+          type: boolean
+        - name: pagination.reverse
+          description: >-
+            reverse is set to true if results are to be returned in the
+            descending order.
+
+
+            Since: cosmos-sdk 0.43
+          in: query
+          required: false
+          type: boolean
+      tags:
+        - Query
+  '/darxan/lone/lone/whois/{index}':
+    get:
+      summary: Queries a Whois by index.
+      operationId: DarxanLoneLoneWhois
+      responses:
+        '200':
+          description: A successful response.
+          schema:
+            type: object
+            properties:
+              whois:
+                type: object
+                properties:
+                  index:
+                    type: string
+                  creator:
+                    type: string
+                  sender:
+                    type: string
+                  receiver:
+                    type: string
+                  amount:
+                    type: string
+                  feePercentage:
+                    type: string
+                  feeReceiver:
+                    type: string
+                  serviceName:
+                    type: string
+        default:
+          description: An unexpected error response.
+          schema:
+            type: object
+            properties:
+              code:
+                type: integer
+                format: int32
+              message:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    '@type':
+                      type: string
+                  additionalProperties: {}
+      parameters:
+        - name: index
+          in: path
+          required: true
+          type: string
+      tags:
+        - Query
   /ibc/apps/interchain_accounts/controller/v1/params:
     get:
       summary: Params queries all parameters of the ICA controller submodule.
@@ -47092,6 +47646,276 @@ definitions:
     description: >-
       MsgCreateVestingAccountResponse defines the Msg/CreateVestingAccount
       response type.
+  darxan.lone.lone.CustomTransaction:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+      creator:
+        type: string
+      sender:
+        type: string
+      receiver:
+        type: string
+      amount:
+        type: string
+      feePercentage:
+        type: string
+      feeReceiver:
+        type: string
+      serviceName:
+        type: string
+  darxan.lone.lone.Customtx:
+    type: object
+    properties:
+      index:
+        type: string
+      creator:
+        type: string
+      sender:
+        type: string
+      receiver:
+        type: string
+      amount:
+        type: string
+      feePercentage:
+        type: string
+      feeReceiver:
+        type: string
+      servieName:
+        type: string
+  darxan.lone.lone.MsgCustomTransactionResponse:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uint64
+  darxan.lone.lone.Params:
+    type: object
+    description: Params defines the parameters for the module.
+  darxan.lone.lone.QueryAllCustomtxResponse:
+    type: object
+    properties:
+      customtx:
+        type: array
+        items:
+          type: object
+          properties:
+            index:
+              type: string
+            creator:
+              type: string
+            sender:
+              type: string
+            receiver:
+              type: string
+            amount:
+              type: string
+            feePercentage:
+              type: string
+            feeReceiver:
+              type: string
+            servieName:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  darxan.lone.lone.QueryAllWhoisResponse:
+    type: object
+    properties:
+      whois:
+        type: array
+        items:
+          type: object
+          properties:
+            index:
+              type: string
+            creator:
+              type: string
+            sender:
+              type: string
+            receiver:
+              type: string
+            amount:
+              type: string
+            feePercentage:
+              type: string
+            feeReceiver:
+              type: string
+            serviceName:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  darxan.lone.lone.QueryCustomtransactionsResponse:
+    type: object
+    properties:
+      sender:
+        type: string
+      receiver:
+        type: string
+      CustomTransaction:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: string
+              format: uint64
+            creator:
+              type: string
+            sender:
+              type: string
+            receiver:
+              type: string
+            amount:
+              type: string
+            feePercentage:
+              type: string
+            feeReceiver:
+              type: string
+            serviceName:
+              type: string
+      pagination:
+        type: object
+        properties:
+          next_key:
+            type: string
+            format: byte
+            title: |-
+              next_key is the key to be passed to PageRequest.key to
+              query the next page most efficiently
+          total:
+            type: string
+            format: uint64
+            title: >-
+              total is total number of results available if
+              PageRequest.count_total
+
+              was set, its value is undefined otherwise
+        description: |-
+          PageResponse is to be embedded in gRPC response messages where the
+          corresponding request message has used PageRequest.
+
+           message SomeResponse {
+                   repeated Bar results = 1;
+                   PageResponse page = 2;
+           }
+  darxan.lone.lone.QueryGetCustomtxResponse:
+    type: object
+    properties:
+      customtx:
+        type: object
+        properties:
+          index:
+            type: string
+          creator:
+            type: string
+          sender:
+            type: string
+          receiver:
+            type: string
+          amount:
+            type: string
+          feePercentage:
+            type: string
+          feeReceiver:
+            type: string
+          servieName:
+            type: string
+  darxan.lone.lone.QueryGetWhoisResponse:
+    type: object
+    properties:
+      whois:
+        type: object
+        properties:
+          index:
+            type: string
+          creator:
+            type: string
+          sender:
+            type: string
+          receiver:
+            type: string
+          amount:
+            type: string
+          feePercentage:
+            type: string
+          feeReceiver:
+            type: string
+          serviceName:
+            type: string
+  darxan.lone.lone.QueryParamsResponse:
+    type: object
+    properties:
+      params:
+        description: params holds all the parameters of this module.
+        type: object
+    description: QueryParamsResponse is response type for the Query/Params RPC method.
+  darxan.lone.lone.Whois:
+    type: object
+    properties:
+      index:
+        type: string
+      creator:
+        type: string
+      sender:
+        type: string
+      receiver:
+        type: string
+      amount:
+        type: string
+      feePercentage:
+        type: string
+      feeReceiver:
+        type: string
+      serviceName:
+        type: string
   ibc.applications.interchain_accounts.controller.v1.Params:
     type: object
     properties:
